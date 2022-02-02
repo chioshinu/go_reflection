@@ -22,16 +22,20 @@ func third() {
 	v1.SetFloat(7.1)
 	fmt.Println(v1.Interface())
 	fmt.Println(x1)
+	fmt.Println(p1.Interface().(*float64))
 }
 
 func structures() {
 	type T struct {
-		A int `my_tag:"tag_value"`
+		A int `my_tag:"tag_value",json:"_A,omitempty"`
 		B string
 	}
 	t := T{23, "Hello"}
+	fmt.Println("t on start ", t)
 	s := reflect.ValueOf(&t).Elem()
+
 	typeOfT := s.Type()
+	fmt.Printf("%v\n", typeOfT)
 	for i := 0; i < s.NumField(); i++ {
 		f := s.Field(i)
 		fmt.Printf("%d: %s %s = %v [%v]\n", i,
@@ -40,4 +44,10 @@ func structures() {
 	s.Field(0).SetInt(77)
 	s.Field(1).SetString("Buy!")
 	fmt.Println("t is now", t)
+
+	fmt.Println(printValue(10))
+	fmt.Println(printValue(10.3))
+	fmt.Println(printValue("10"))
+	fmt.Println(printValue(t))
+
 }

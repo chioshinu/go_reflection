@@ -2,12 +2,12 @@ package main
 
 func main() {
 	// Reflection goes from interface value to reflection object
-	first()
+	// first()
 
 	// Reflection goes from reflection object to interface value
-	second()
+	// second()
 
 	// To modify a reflection object, the value must be settable.
-	third()
+	// third()
 	structures()
 }
